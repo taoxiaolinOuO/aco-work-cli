@@ -13,6 +13,9 @@ Aco CLI 脚手架工具，用于从远程仓库拉取模板文件并生成项目
 - 自动检测模板命名模式，无需硬编码
 - 前端使用连字符命名，后端使用大驼峰命名
 - 支持大写下划线格式的数据库表名替换
+- 支持模板的添加、删除、更新和查看操作
+- 所有命令都支持彩色输出，提供更好的用户体验
+- 支持直接指定参数或交互式操作
 
 ## 安装
 
@@ -35,6 +38,18 @@ Aco CLI 脚手架工具，用于从远程仓库拉取模板文件并生成项目
 # 创建新模块
 aco-cli create <module-name>
 
+# 添加新模板
+aco-cli add template [url]
+
+# 删除模板
+aco-cli delete template [name]
+
+# 显示模板列表
+aco-cli show template
+
+# 更新模板
+aco-cli update template [name]
+
 # 查看帮助信息
 aco-cli --help
 
@@ -54,13 +69,84 @@ aco-cli --version
    aco-cli create aco-user
    ```
 
+3. 添加新模板（直接指定URL）：
+   ```bash
+   aco-cli add template https://gitee.com/Eric_L/aco-code-templates.git
+   ```
+
+4. 添加新模板（交互式）：
+   ```bash
+   aco-cli add template
+   ```
+
+5. 删除模板（直接指定模板名）：
+   ```bash
+   aco-cli delete template aco-code-templates
+   ```
+
+6. 删除模板（交互式，可多选）：
+   ```bash
+   aco-cli delete template
+   ```
+
+7. 显示模板列表：
+   ```bash
+   aco-cli show template
+   ```
+
+8. 更新模板（直接指定模板名）：
+   ```bash
+   aco-cli update template aco-code-templates
+   ```
+
+9. 更新模板（交互式，可多选）：
+   ```bash
+   aco-cli update template
+   ```
+
 ### 操作说明
 
-1. 第一次执行命令时，需要输入模板仓库链接
-2. 后续执行命令时，可以选择使用已有模板或新模板
-3. 使用上下方向键选择选项，按回车键确认
-4. 下载和生成过程中会显示loading效果
-5. 成功信息会以绿色显示
+1. **创建模块**：
+   - 执行 `aco-cli create <module-name>` 命令
+   - 如果未提供模块名，会提示输入
+   - 选择使用已有模板或添加新模板
+   - 选择模板类型（前端或后端）
+
+2. **添加模板**：
+   - 执行 `aco-cli add template [url]` 命令
+   - 如果提供了URL，直接添加模板
+   - 如果未提供URL，会提示输入模板仓库链接
+
+3. **删除模板**：
+   - 执行 `aco-cli delete template [name]` 命令
+   - 如果提供了模板名，直接删除该模板
+   - 如果未提供模板名，会显示模板列表，支持多选
+   - 使用上下方向键移动选择项
+   - 按空格键选中/取消选中模板
+   - 按 a 键全选所有模板
+   - 按 i 键反选所有模板
+   - 按回车键确认选择并执行删除
+
+4. **显示模板列表**：
+   - 执行 `aco-cli show template` 命令
+   - 会显示所有已添加的模板及其URL
+
+5. **更新模板**：
+   - 执行 `aco-cli update template [name]` 命令
+   - 如果提供了模板名，直接更新该模板
+   - 如果未提供模板名，会显示模板列表，支持多选
+   - 使用上下方向键移动选择项
+   - 按空格键选中/取消选中模板
+   - 按 a 键全选所有模板
+   - 按 i 键反选所有模板
+   - 按回车键确认选择并执行更新
+
+6. **通用操作**：
+   - 使用上下方向键选择选项，按回车键确认
+   - 下载和生成过程中会显示loading效果
+   - 成功信息会以绿色显示
+   - 错误信息会以红色显示
+   - 提示信息会以黄色显示
 
 ## 模板结构
 
@@ -233,8 +319,11 @@ namespace GuoKun.CPS.Services
 
 - 模板URL不能为空
 - 模块名称不能为空
+- 模板名称不能为空（删除或更新时）
 - 下载模板失败时会显示错误信息
 - 目录创建失败时会显示错误信息
+- 模板不存在时会显示错误信息
+- 选择模板时至少选择一个模板
 
 ## 注意事项
 

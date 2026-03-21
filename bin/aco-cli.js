@@ -22,13 +22,13 @@ program.option('--help', '显示帮助信息', () => {
 // 帮助信息
 const showHelp = () => {
   console.log(chalk.green('Aco CLI 脚手架工具使用说明:'));
-  console.log(chalk.blue('  aco-cli create <module-name>  - 创建新模块（未提供时会提示输入）'));
-  console.log(chalk.blue('  aco-cli add template [url]    - 添加新模板（未提供时会提示输入）'));
+  console.log(chalk.blue('  aco-cli create <module-name>   - 创建新模块（未提供时会提示输入）'));
+  console.log(chalk.blue('  aco-cli add template [url]     - 添加新模板（未提供时会提示输入）'));
   console.log(chalk.blue('  aco-cli update template [name] - 更新模板（未提供时会提示选择）'));
   console.log(chalk.blue('  aco-cli delete template [name] - 删除模板（未提供时会提示选择）'));
-  console.log(chalk.blue('  aco-cli show template         - 显示模板列表'));
-  console.log(chalk.blue('  aco-cli --help                - 显示帮助信息'));
-  console.log(chalk.blue('  aco-cli --version             - 显示版本信息'));
+  console.log(chalk.blue('  aco-cli show template          - 显示模板列表'));
+  console.log(chalk.blue('  aco-cli --help                 - 显示帮助信息'));
+  console.log(chalk.blue('  aco-cli --version              - 显示版本信息'));
 };
 
 // create 命令
